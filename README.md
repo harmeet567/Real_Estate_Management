@@ -1,0 +1,3 @@
+# Real_Estate_Managemnet
+Real Estate Management application developed in ASP.NET , C# and SQL SERVER 2012 
+The Real-Estate Management website shall provide real estate agency the ability to manage and present their property listings and provide the users a structured way to search the properties based on different search criteria. The web site will be set up in a way that real estate agency have all administrative rights on their listings. They are able to give offers on different properties, add new properties in the listing. Users will be able to search the property based on different search criteria like in different regions, Type of property (residential, condo, etc.), based on size and based on price low to high or high to low.
