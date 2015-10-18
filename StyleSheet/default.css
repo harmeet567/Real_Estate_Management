@@ -1,0 +1,14 @@
+﻿body {
+
+
+}
+
+/* menu */
+#navcontainer{  text-align:left; height:70px; 
+width:100%;background-color: #42361b; margin-top:0px; position:absolute }
+#navlist{ padding-top:0px;}
+#navlist ul{  margin: 0;   padding: 0 0 0 0;   color: #FFFFFF; font-size: .65em;  letter-spacing: 2px;font-weight: bold;  }
+#navlist li{display: inline; list-style-type: none;  }
+#navlist li a{padding: 1em 12px; color: #d7cca2;  text-decoration: none; float: left; }
+#navlist li a:hover{color: #a6c03d; background-color:#42361b;}
+#navlist #current{color: #FFFFFF;  text-decoration:none;   background-color: #42361b; text-align: left;}

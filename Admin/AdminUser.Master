@@ -1,0 +1,77 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="AdminUser.master.cs" Inherits="RealEstateDemo.AdminUser" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>
+        <asp:ContentPlaceHolder ID="title" runat="server">
+        </asp:ContentPlaceHolder>
+    </title>
+    <link href="~/StyleSheet/RegisteredUser.css" rel="stylesheet" />
+
+    <%--<link href="~/StyleSheet/AdminUser.css" rel="stylesheet" />--%>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+
+    </asp:ContentPlaceHolder>
+
+    <script type="text/javascript" language="javascript">
+        function disableBackButton() {
+            window.history.forward()
+        }
+        disableBackButton();
+        window.onload = disableBackButton();
+        window.onpageshow = function (evt) { if (evt.persisted) disableBackButton() }
+        window.onload = function () { void (0) }
+</script>
+</head>
+
+<body>
+    <form id="form1" runat="server" style="background-image: url('/Images/back.jpg')" >
+    <div>
+        <div style="background-color:#B8E6E6;margin-left:180px;; height:160px; width:1000px; ">
+            <asp:Image ID="Image2" runat="server" Height="157px" style="text-align: left" Width="534px" ImageUrl="~/Images/templatemo_banner_bg.png" />
+            
+        
+             <asp:Image ID="Image1" runat="server" Height="81px" ImageUrl="~/Images/Montreal real estate.jpg" Width="173px" style="margin-bottom: 0px; float:right;  margin-top: 0px;"/>
+            
+        
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            
+        
+             </div>
+
+     <%--<div>
+     
+        
+             <asp:Image ID="Image1" runat="server" Height="160px" ImageUrl="~/Images/Montreal real estate.jpg" Width="530px" style="margin-bottom: 0px" />
+            
+     
+    </div>--%>
+
+
+    <div class="wrapper">
+                <div class="menu">
+                  <ul>
+                      <li><a href="UploadProperties.aspx"> Upload Properties</a></li>
+                      <li><a href="AcceptOffers.aspx">Offers   </a></li>
+                      <li><a href="CheckQueries.aspx">Feedback</a></li>
+                      <asp:Label ID="Label1" runat="server"></asp:Label>
+                  </ul>
+
+                    <asp:Button ID="adminbutton" runat="server"  Text="Log out"  style="text-align: right" OnClick="adminbutton_Click"  />
+                </div>
+                <div class="clear"></div>
+
+                <div class="content">
+                   <asp:ContentPlaceHolder ID="ContentBody" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+                <div class="clear"></div>
+                <div class="footer">Montreal Real Estate Ptv. Ltd.</div>
+                
+      </div>
+        </div>
+    </form>
+</body>
+</html>

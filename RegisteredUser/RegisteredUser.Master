@@ -1,0 +1,184 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="RegisteredUser.Master.cs" Inherits="RealEstateDemo.RegisteredUser.RegisteredUser" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link href="~/StyleSheet/RegisteredUser.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <script type="text/javascript" language="javascript">
+        function disableBackButton() {
+            window.history.forward()
+        }
+        disableBackButton();
+        window.onload = disableBackButton();
+        window.onpageshow = function (evt) { if (evt.persisted) disableBackButton() }
+        window.onload = function () { void (0) }
+</script>
+
+</head>
+<body>
+    <form id="form1" runat="server" style="background-image: url('/Images/back.jpg')">
+     
+     <%--<div style=" height:160px; margin-left:200px; background-image: none; width:942px;  background-color: #CCCCFF" >--%>
+    <div style="background-color:#B8E6E6;margin-left:175px; height:160px; width:1000px; ">
+            <asp:Image ID="Image2" runat="server" Height="157px" style="text-align: left" Width="534px" ImageUrl="~/Images/templatemo_banner_bg.png" />
+            
+        
+             <asp:Image ID="Image1" runat="server" Height="81px" ImageUrl="~/Images/Montreal real estate.jpg" Width="173px" style="margin-bottom: 0px; float:right;  margin-top: 0px;"/>
+            
+        
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            
+        
+             </div>
+        
+        
+        <div class="wrapper">
+            <div class="menu">
+               <ul>
+                   <li> <a href="UserPage.aspx"> Search Properties  </a></li>
+                   <li> <a href="ViewOfferStatus.aspx"> View Offers </a></li>
+                   <li> <a href="SendFeedback.aspx"> Send Feedback  </a></li>
+               </ul>
+
+                <asp:Button ID="btnLogout" runat="server" Text="Log out" OnClick="btnLogout_Click" style="text-align: right; height: 26px;" />
+            </div>
+            <div class="clear"></div>
+
+            <div class="wrapper"  style="background-color:#FFFFCC"  <%-- style="height:100px; width:922px"--%> >
+
+            <asp:Label ID="Label1" runat="server" Text="Label" ForeColor="Brown" Font-Size="Medium" Font-Names="string" ></asp:Label>
+
+    <style type="text/css">
+        .auto-style1 {
+            width: 100%;
+            height: 107px;
+        }
+        .auto-style2 {
+            width: 199px;
+        }
+        .auto-style3 {
+            width: 200px;
+        }
+        .auto-style4 {
+            width: 399px;
+        }
+        .auto-style5 {
+            width: 199px;
+            height: 25px;
+        }
+        .auto-style6 {
+            width: 200px;
+            height: 30px;
+        }
+        .auto-style7 {
+            width: 399px;
+            height: 30px;
+        }
+        .auto-style8 {
+            width: 199px;
+            height: 30px;
+        }
+        .auto-style9 {
+            width: 200px;
+            height: 30px;
+        }
+        .auto-style10 {
+            width: 399px;
+            height: 30px;
+        }
+        .auto-style11 {
+            width: 199px;
+            height: 30px;
+        }
+        .auto-style12 {
+            width: 199px;
+            height: 30px;
+        }
+        .auto-style13 {
+            width: 200px;
+            height: 30px;
+        }
+        .auto-style14 {
+            width: 399px;
+            height: 30px;
+        }
+    </style>
+    <br />
+
+            <table class="auto-style1">
+                <tr>
+                    <td class="auto-style8">
+                        <asp:DropDownList ID="DropDown_Region" runat="server" AutoPostBack="true" BackColor="White" DataTextField="Region_Name" DataValueField="Region_Id" OnSelectedIndexChanged="RegionsList_SelectedIndexChanged1" Height="20px" Width="190px">
+                        </asp:DropDownList>
+                    </td>
+                    <td class="auto-style6">
+                        <asp:DropDownList ID="DropDown_SubRegion" DataTextField="SubRegion_Name" DataValueField="SubRegion_Id"  runat="server" Height="20px" Width="190px">
+                        </asp:DropDownList>
+                    </td>
+                    <td class="auto-style7">
+                        <asp:DropDownList ID="DropDown_Purpose"   runat="server" AutoPostBack="true" Height="20px" Width="190px" OnSelectedIndexChanged="DropDown_Purpose_SelectedIndexChanged">
+                            <asp:ListItem Value="-1">Select Purpose</asp:ListItem>
+                            <asp:ListItem>Rent</asp:ListItem>
+                            <asp:ListItem>Buy</asp:ListItem>
+                            <asp:ListItem>Lease</asp:ListItem>
+                        </asp:DropDownList>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style11">
+                        <asp:DropDownList ID="DropDown_PropType" runat="server"  DataTextField="Property_Type" Height="20px" Width="190px">
+                        </asp:DropDownList>
+                    </td>
+                    <td class="auto-style9">
+                        <asp:DropDownList ID="DropDown_NoOfBedRooms" DataTextField="No_Of_Bedrooms" runat="server" Height="20px" Width="190px">
+                        </asp:DropDownList>
+                    </td>
+                    <td class="auto-style10">
+                        <asp:DropDownList ID="DropDown_NoOfBathRooms" DataTextField="No_Of_BathRooms" runat="server" Height="20px" Width="190px">
+                        </asp:DropDownList>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style12">
+                        <asp:DropDownList ID="DropDown_LowerPriceLimit"  DataTextField="Price" runat="server" Height="20px" Width="190px">
+                        </asp:DropDownList>
+                    </td>
+                    <td class="auto-style13">
+                        <asp:DropDownList ID="DropDown_UpperPriceLimit"  DataTextField="Price"  runat="server" Height="20px" Width="190px">
+                        </asp:DropDownList>
+                    </td>
+                    <td class="auto-style14"></td>
+                </tr>
+  
+                <tr>
+                    <td class="auto-style5">
+                        <asp:CheckBox ID="Facilities" Text="Schools,Shopping,Hospitals" runat="server" Width="190px" ForeColor="#990000" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="auto-style2"></td>
+                    <td class="auto-style3">
+                        <asp:Button ID="SearchButton" runat="server" OnClick="Search_Click" style="margin-left: 27px" Text="Search" Width="147px" />
+                    </td>
+                    <td class="auto-style4"></td>
+                </tr>
+            </table>    
+            </div>
+            <div class="content">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+            </div>
+
+            
+           
+            <div class="clear"></div>
+            <div class="footer">Montreal Real Estate Ptv. Ltd.</div>
+      </div>
+    </form>
+</body>
+</html>

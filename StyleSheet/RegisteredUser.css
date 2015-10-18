@@ -1,0 +1,111 @@
+﻿body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,pre,form,fieldset,textarea,p,blockquote
+{
+    padding: 0;
+    margin : 0 0 0 0px;
+    /*color:rgb(237, 237, 237);
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:12px;*/
+}
+body
+{
+    color: rgb(242, 242, 242);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+}
+.wrapper
+{
+    width: 1000px;
+    margin: auto;
+}
+.content
+{
+    width: 100%;
+    background-color: rgb(254,254,254);
+    border: 1px solid rgb(224,224,224);
+    border-radius: 5px 5px 5px;
+    float: left;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    min-height: 400px;
+    
+}
+.menu
+{
+    /*background-color: rgb(10,110,178); blue*/
+    /*background-color: rgb(17,141,04);my testing*/
+    background-color:#AC5930;
+    width: 970px;
+    margin: 0px 0px 0px;
+    padding: 15px;
+    height: 42px; /* for adjusting the height of menu tabs*/
+    color : rgb(243,243,243);
+    border-radius: 5px 5px 5px 5px;
+    text-align: right;
+}
+.navigation_first_item
+{
+    border-left: 0px;
+    border-radius: 5px 0 0 5px;
+}
+.navitem_s
+{
+    float: left;
+    /*border-right: 1px solid rgb(10,85,125);
+    border-left: 1px solid rgb(67,153,200);*/
+    border-right: 1px solid rgb(191,142,50);
+    border-left: 1px solid rgb(191,142,50);
+    height: 40px;
+    background-color: rgb(191,142,50);
+}
+.menu ul li{
+    float: left;
+    display: block;
+    list-style: none;
+    /*border-right: 1px solid rgb(10, 85, 125);
+    border-left: 1px solid rgb(67, 153, 200); */
+    /* testing1 --ok for lines between tabs */
+    border-right: 1px solid rgb(162,120,43);
+    border-left: 1px solid rgb(162,120,43); 
+    /* testing2 --ok more darker lines 
+    border-right: 1px solid rgb(124,92,33);
+    border-left: 1px solid rgb(124,92,33);*/
+}
+.menu ul li.navigation_first_item:hover{
+    border-radius: 5px 0px 0px 5px;
+}
+.menu ul li a
+{
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 40px;
+    padding: 8px 20px;
+    color: rgb(255,255,255);
+    text-decoration: none;
+    display: block;
+}
+.menu ul li:hover
+{
+    /*background-color: rgb(14,79,114);
+    border-right: 1px solid rgb(14,89,130);*/
+    /* testing-1 backgroundcolour on hovering mouse on each tab
+        Below color gave darker version of gold*/
+        background-color: #8A4726;
+        border-right: solid rgb(103,77,27);
+ }
+.clear
+{
+    clear:both;
+}
+
+.footer {
+    height: 50px;
+    background-color:#AC5930;
+    color: rgb(255,255,255);
+    border-radius: 5px 5px 5px;
+    text-align: center;
+}
+.footer h2
+{
+    padding: 15px;
+    text-align: center;
+}
