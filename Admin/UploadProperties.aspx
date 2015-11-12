@@ -27,65 +27,29 @@
             width: 234px;
             text-align: right;
         }
-        .auto-style16 {
+        .auto-style10 {
             width: 234px;
-            text-align: right;
-            height: 30px;
-        }
-        .auto-style17 {
-            width: 18px;
-            height: 30px;
-        }
-        .auto-style18 {
-            height: 30px;
-        }
-        .auto-style19 {
-            width: 234px;
-            text-align: right;
-            height: 36px;
-        }
-        .auto-style20 {
-            width: 18px;
-            height: 36px;
-        }
-        .auto-style21 {
-            height: 36px;
-        }
-        .auto-style22 {
-            width: 234px;
-            height: 21px;
+            height: 15px;
             text-align: right;
         }
-        .auto-style23 {
+        .auto-style11 {
             width: 18px;
-            height: 21px;
+            height: 15px;
         }
-        .auto-style24 {
-            height: 21px;
+        .auto-style12 {
+            height: 15px;
         }
-        .auto-style25 {
+        .auto-style13 {
             width: 234px;
+            height: 19px;
             text-align: right;
-            height: 32px;
         }
-        .auto-style26 {
+        .auto-style14 {
             width: 18px;
-            height: 32px;
+            height: 19px;
         }
-        .auto-style27 {
-            height: 32px;
-        }
-        .auto-style28 {
-            width: 234px;
-            text-align: right;
-            height: 50px;
-        }
-        .auto-style29 {
-            width: 18px;
-            height: 50px;
-        }
-        .auto-style30 {
-            height: 50px;
+        .auto-style15 {
+            height: 19px;
         }
     </style>
 
@@ -97,15 +61,15 @@
     <asp:Panel ID="PropertyUploadPanel" runat="server" Height="340px">
         <table style="width: 100%;">
             <tr>
-                <td class="auto-style28">Address</td>
-                <td class="auto-style29">
+                <td class="auto-style9">Address</td>
+                <td class="auto-style2">
                     <asp:TextBox ID="txtAddress" runat="server" Height="36px" Width="196px"></asp:TextBox>
                 </td>
-                <td class="auto-style30"></td>
+                <td>&nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style22">Bedrooms</td>
-                <td class="auto-style23">
+                <td class="auto-style10">Bedrooms</td>
+                <td class="auto-style11">
                     <asp:DropDownList ID="DropDown_Beds" runat="server" Height="25px" Width="204px">
                         <asp:ListItem Selected="True" Value="1"></asp:ListItem>
                         <asp:ListItem Value="2"></asp:ListItem>
@@ -114,11 +78,11 @@
                         <asp:ListItem Value="5"></asp:ListItem>
                     </asp:DropDownList>
                 </td>
-                <td class="auto-style24"></td>
+                <td class="auto-style12"></td>
             </tr>
             <tr>
-                <td class="auto-style19">Bathrooms</td>
-                <td class="auto-style20">
+                <td class="auto-style9">Bathrooms</td>
+                <td class="auto-style2">
                     <asp:DropDownList ID="DropDown_Bath" runat="server" Height="25px" Width="204px">
                         <asp:ListItem Selected="True" Value="1"></asp:ListItem>
                         <asp:ListItem Value="2"></asp:ListItem>
@@ -127,48 +91,48 @@
                         <asp:ListItem></asp:ListItem>
                     </asp:DropDownList>
                 </td>
-                <td class="auto-style21"></td>
+                <td>&nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style16">Area&nbsp; (in Sq.Ft )</td>
-                <td class="auto-style17">
+                <td class="auto-style13">Area&nbsp; (in Sq.Ft )</td>
+                <td class="auto-style14">
                     <asp:TextBox ID="txtAreaInSft" runat="server" Width="200px"></asp:TextBox>
                 </td>
-                <td class="auto-style18"></td>
+                <td class="auto-style15"></td>
             </tr>
             <tr>
-                <td class="auto-style25">Price (in CAD)</td>
-                <td class="auto-style26">
+                <td class="auto-style9">Price (in CAD)</td>
+                <td class="auto-style2">
                     <asp:TextBox ID="txtPrice" runat="server" Width="200px"></asp:TextBox>
                 </td>
-                <td class="auto-style27"></td>
+                <td>&nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style16">Region</td>
-                <td class="auto-style17">
+                <td class="auto-style9">Region</td>
+                <td class="auto-style2">
                     <asp:DropDownList ID="DropDown_Region" runat="server" AutoPostBack="true" DataTextField="Region_Name" DataValueField="Region_Id" Height="25px" Width="204px" OnSelectedIndexChanged="DropDown_Region_SelectedIndexChanged">
                     </asp:DropDownList>
                 </td>
-                <td class="auto-style18"></td>
+                <td>&nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style19">Sub-Region</td>
-                <td class="auto-style20">
+                <td class="auto-style9">Sub-Region</td>
+                <td class="auto-style2">
                     <asp:DropDownList ID="DropDown_SubRegion" runat="server" DataTextField="SubRegion_Name" DataValueField="SubRegion_Id" Height="25px" Width="204px">
                     </asp:DropDownList>
                 </td>
-                <td class="auto-style21"></td>
+                <td>&nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style16">Purpose</td>
-                <td class="auto-style17">
+                <td class="auto-style9">Purpose</td>
+                <td class="auto-style2">
                     <asp:DropDownList ID="DropDown_Purpose" runat="server" Height="25px" Width="204px">
                         <asp:ListItem Value="Rent"></asp:ListItem>
                         <asp:ListItem Value="Buy"></asp:ListItem>
                         <asp:ListItem Value="Lease"></asp:ListItem>
                     </asp:DropDownList>
                 </td>
-                <td class="auto-style18"></td>
+                <td>&nbsp;</td>
             </tr>
             <tr>
                 <td class="auto-style8">Property Type</td>
@@ -183,11 +147,11 @@
                 <td class="auto-style6">&nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style16">Image of Property </td>
-                <td class="auto-style17">
+                <td class="auto-style9">Image of Property </td>
+                <td class="auto-style2">
                     <asp:FileUpload ID="BrowseImage" runat="server" style="margin-left: 0px" Width="208px" />
                 </td>
-                <td class="auto-style18"></td>
+                <td>&nbsp;</td>
             </tr>
             <tr>
                 <td class="auto-style9">&nbsp;</td>

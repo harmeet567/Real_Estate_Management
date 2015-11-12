@@ -8,9 +8,6 @@
         function basicPopup() {
             popupWindow = window.open("CalculateEMI.aspx", 'popUpWindow', 'height=300,width=400,left=100,top=30,resizable=No,scrollbars=No,toolbar=no,menubar=no,location=no,directories=no, status=No');
         }
-        function DetailsPopup() {
-            popupWindow = window.open("DetailsOfProp.aspx?ID=this.Id", 'popUpWindow', 'height=300,width=400,left=100,top=30,resizable=No,scrollbars=No,toolbar=no,menubar=no,location=no,directories=no, status=No');
-        }
 </script>
     <style type="text/css">
 .gridview th
@@ -32,7 +29,7 @@
 <br /> 
 
     <asp:GridView ID="gvPropertyList" runat="server" AutoGenerateColumns = "False" HorizontalAlign="Center" CssClass="gridview" AllowSorting="True"
-       Font-Names = "Arial" BackColor="#DEBA84" BorderColor="#BF8E32" BorderStyle="Double" BorderWidth="1px" CellPadding="3" CellSpacing="2"   OnSorting="gvPropertyList_Sorting" OnRowCommand="gvPropertyList_RowCommand"  OnRowDataBound="gvPropertyList_RowDataBound">
+       Font-Names = "Arial" BackColor="#DEBA84" BorderColor="#BF8E32" BorderStyle="Double" BorderWidth="1px" CellPadding="3" CellSpacing="2"   OnSorting="gvPropertyList_Sorting" OnRowCommand="gvPropertyList_RowCommand"  OnRowDataBound="gvPropertyList_RowDataBound" >
     <Columns>
        <asp:BoundField HeaderText="ID" DataField = "Id" ItemStyle-Width="50" >
 <ItemStyle Width="50px"></ItemStyle>
@@ -43,12 +40,7 @@
        </asp:ImageField>
        <asp:BoundField HeaderText="Address" DataField="Property_Address" ItemStyle-Width="150px" >
 <ItemStyle Width="150px"></ItemStyle>
-         </asp:BoundField>
-            <asp:TemplateField HeaderText="View Details">
-       <ItemTemplate>
-       <asp:Button   ID="Details" runat="server"  Text="Details" OnClientClick="DetailsPopup();return false;"></asp:Button>
-        </ItemTemplate>
-    </asp:TemplateField>
+        </asp:BoundField>
        <asp:BoundField HeaderText="Price (CAD)" DataField="Price" ItemStyle-Width="100px" SortExpression="Price" >
 <ItemStyle Width="100px"></ItemStyle>
         </asp:BoundField>
@@ -60,9 +52,6 @@
 <ItemStyle Width="100px"></ItemStyle>
         </asp:BoundField>
         <asp:BoundField HeaderText="Purpose" DataField="Purpose_Type" ItemStyle-Width="100px" SortExpression="Purpose_Type"  >
-<ItemStyle Width="100px"></ItemStyle>
-        </asp:BoundField>
-        <asp:BoundField HeaderText="NearBy" DataField="Facilities" ItemStyle-Width="100px" >
 <ItemStyle Width="100px"></ItemStyle>
         </asp:BoundField>
         <asp:TemplateField HeaderText="Quote Offer Price">

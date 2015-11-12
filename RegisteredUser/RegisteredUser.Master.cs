@@ -14,7 +14,7 @@ namespace RealEstateDemo.RegisteredUser
     {
         protected void Page_Load(object sender, EventArgs e)
         {
- 
+
             Label1.Text = "Welcome " + Session["UserName"].ToString().ToUpper();
 
            if (!IsPostBack)
@@ -108,44 +108,16 @@ namespace RealEstateDemo.RegisteredUser
             Session["LowerPrice"] = DropDown_LowerPriceLimit.SelectedValue;
             Session["UpperPrice"] = DropDown_UpperPriceLimit.SelectedValue;
 
-            if (Facilities.Checked)
-            {
-                Session["Facilities"] = "True";
-            }
-            else
-                Session["Facilities"] = "False";
-
-
                 Response.Redirect("~/RegisteredUser/WebForm1.aspx");
 
         }
 
         protected void DropDown_Purpose_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-            string CS = ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString;
-            SqlConnection con = new SqlConnection(CS);
-            con.Open();
-
             DropDown_LowerPriceLimit.Enabled = true;
             DropDown_UpperPriceLimit.Enabled = true; // To Enable the Pricedropdowns
-
-            string sortorder = "asc";
-            SqlDataAdapter da = new SqlDataAdapter("sPGetPriceLimit", con);
-            da.SelectCommand.CommandType = CommandType.StoredProcedure;
-
-            SqlParameter Param1 = new SqlParameter("@Purpose", DropDown_Purpose.SelectedValue);
-            SqlParameter Param2 = new SqlParameter("@sortorder", sortorder);
-
-            da.SelectCommand.Parameters.Add(Param1);
-            da.SelectCommand.Parameters.Add(Param2);
-
-            //da.SelectCommand.ExecuteNonQuery();
-
-            DataSet DS = new DataSet();
-            da.Fill(DS);
-
-            con.Close();
+            SqlParameter Param = new SqlParameter("@Purpose", DropDown_Purpose.SelectedValue);
+            DataSet DS = GetData("sPGetPriceLimit", Param);
 
             ListItem liPrice = new ListItem("Lower Price Limit", "-1");
             DropDown_LowerPriceLimit.Items.Insert(0, liPrice);
@@ -154,29 +126,11 @@ namespace RealEstateDemo.RegisteredUser
             DropDown_LowerPriceLimit.DataSource = DS;
             DropDown_LowerPriceLimit.DataBind();
 
-            /* For Upper Price Limit */
-            string up_sortorder = "desc";
-            SqlDataAdapter da_upp = new SqlDataAdapter("sPGetPriceLimit", con);
-            da_upp.SelectCommand.CommandType = CommandType.StoredProcedure;
-
-            SqlParameter Param3 = new SqlParameter("@Purpose", DropDown_Purpose.SelectedValue);
-            SqlParameter Param4 = new SqlParameter("@sortorder", up_sortorder);
-
-            da_upp.SelectCommand.Parameters.Add(Param3);
-            da_upp.SelectCommand.Parameters.Add(Param4);
-
-            //da_upp.SelectCommand.ExecuteNonQuery();
-
 
             ListItem liUpPrice = new ListItem("Upper Price Limit", "-1");
             DropDown_UpperPriceLimit.Items.Insert(0, liUpPrice);
 
-            DataSet DS1 = new DataSet();
-            da_upp.Fill(DS1);
-
-            con.Close();
-
-            DropDown_UpperPriceLimit.DataSource = DS1;
+            DropDown_UpperPriceLimit.DataSource = DS;
             DropDown_UpperPriceLimit.DataBind();
 
         

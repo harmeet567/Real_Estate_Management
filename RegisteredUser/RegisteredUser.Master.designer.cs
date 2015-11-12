@@ -139,15 +139,6 @@ namespace RealEstateDemo.RegisteredUser {
         protected global::System.Web.UI.WebControls.DropDownList DropDown_UpperPriceLimit;
         
         /// <summary>
-        /// Facilities control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox Facilities;
-        
-        /// <summary>
         /// SearchButton control.
         /// </summary>
         /// <remarks>

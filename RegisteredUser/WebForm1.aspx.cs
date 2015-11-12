@@ -36,15 +36,6 @@ namespace RealEstateDemo.RegisteredUser
             int P6 = Convert.ToInt32((string)Session["BathRooms"]);
             int P7 = Convert.ToInt32((string)Session["LowerPrice"]);
             int P8 = Convert.ToInt32((string)Session["UpperPrice"]);
-            string P9 = (string)Session["Facilities"];
-
-            int Facilities_Flag = 0;
-            if (P9 == "True")
-            {
-                Facilities_Flag = 1;
-            }
-            else
-                Facilities_Flag = 0;
 
             SqlCommand command = new SqlCommand();
             string CS = ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString;
@@ -72,7 +63,6 @@ namespace RealEstateDemo.RegisteredUser
             SqlParameter Param6 = new SqlParameter("@NoOfBathrooms", P6);
             SqlParameter Param7 = new SqlParameter("@LowerPrice", P7);
             SqlParameter Param8 = new SqlParameter("@UpperPrice", P8);
-            SqlParameter Param9 = new SqlParameter("@Facilities", Facilities_Flag);
 
             da.SelectCommand.Parameters.Add(Param1);
             da.SelectCommand.Parameters.Add(Param2);
@@ -82,8 +72,6 @@ namespace RealEstateDemo.RegisteredUser
             da.SelectCommand.Parameters.Add(Param6);
             da.SelectCommand.Parameters.Add(Param7);
             da.SelectCommand.Parameters.Add(Param8);
-            da.SelectCommand.Parameters.Add(Param9);
-
 
             /* New code to fetch record from temp table */
             da.SelectCommand.ExecuteNonQuery();
@@ -97,11 +85,8 @@ namespace RealEstateDemo.RegisteredUser
 
             con.Close();
 
-            //if (DT!=null && DT.Tables.Count > 0)
-            if(DT.Tables[0].Rows.Count > 0)
+            if (DT.Tables.Count > 0)
             {
-                
-
                 DataView myDataView = new DataView();
                 myDataView = DT.Tables[0].DefaultView;
 
@@ -113,17 +98,6 @@ namespace RealEstateDemo.RegisteredUser
                 //gvPropertyList.DataSource = DT;
                 gvPropertyList.DataSource = myDataView;
                 gvPropertyList.DataBind();
-                /* Display facitlites based on check box selection */
-                if (Facilities_Flag > 0)
-                {
-                    gvPropertyList.HeaderRow.Cells[8].Visible = true;
-                    gvPropertyList.Columns[8].Visible = true;
-                }
-                else
-                {
-                    gvPropertyList.HeaderRow.Cells[8].Visible = false;
-                    gvPropertyList.Columns[8].Visible = false;
-                }
 
             }
             else
@@ -151,7 +125,7 @@ namespace RealEstateDemo.RegisteredUser
                 if (String.IsNullOrEmpty(Purpose))
                 {
                     /* Read Purpose from Gridview which is coming from PropertyList Master and take decision to allow offer*/
-                    string Posted_PropertyPurp = gvPropertyList.Rows[CurrentRowIndex].Cells[7].Text;
+                    string Posted_PropertyPurp = gvPropertyList.Rows[CurrentRowIndex].Cells[6].Text;
                     if (Posted_PropertyPurp == "Rent")
                     {
                         string script = Popup_And_Redirect("Property you are trying to make offer is not for Buying,Please check !!", "UserPage.aspx");
@@ -170,19 +144,12 @@ namespace RealEstateDemo.RegisteredUser
 
                 else if ((Purpose == "Buy") || Purpose == "-1")
                 {
-                    string Posted_PropertyPurp = gvPropertyList.Rows[CurrentRowIndex].Cells[7].Text;
-                    if (Posted_PropertyPurp == "Rent")
-                    {
-                        string script = Popup_And_Redirect("Property you are trying to make offer is not for Buying,Please check !!", "UserPage.aspx");
-
-                        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "alert", script, true);
-                    }
                     /* Check if any Price is quoted or not in the check box */
-                    TextBox txt = (TextBox)gvPropertyList.Rows[CurrentRowIndex].Cells[8].FindControl("txtOffer");
+                    TextBox txt = (TextBox)gvPropertyList.Rows[CurrentRowIndex].Cells[7].FindControl("txtOffer");
                     QuotedPrice = txt.Text.ToString().Trim();
                     if (String.IsNullOrEmpty(QuotedPrice))
                     {
-                        string script = Popup_And_Redirect("Please quote a valid price to submit your offer!!", "WebForm1.aspx");
+                        string script = Popup_And_Redirect("Please quote a valid price to submit your offer!!", "WebForm4.aspx");
 
                         ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "alert", script, true);
                         //ScriptManager.RegisterStartupScript(this, this.GetType(), "Message", "alert('Please quote a valid price to submit your offer');", true);
@@ -192,7 +159,7 @@ namespace RealEstateDemo.RegisteredUser
                     {
                         PropertyId = Convert.ToInt16(gvPropertyList.Rows[CurrentRowIndex].Cells[0].Text);
                         Address = gvPropertyList.Rows[CurrentRowIndex].Cells[2].Text;
-                        ActualPrice = Convert.ToInt32(gvPropertyList.Rows[CurrentRowIndex].Cells[4].Text);
+                        ActualPrice = Convert.ToInt32(gvPropertyList.Rows[CurrentRowIndex].Cells[3].Text);
 
                         string CS = ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString;
                         using (SqlConnection con = new SqlConnection(CS))
@@ -299,9 +266,7 @@ namespace RealEstateDemo.RegisteredUser
             {
                 ViewState["sortOrder"] = value;
             }
-        }
-
-        
+        }  
 
 
 

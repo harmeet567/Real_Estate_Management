@@ -40,7 +40,7 @@
             <SortedDescendingCellStyle BackColor="#F1E5CE" />
             <SortedDescendingHeaderStyle BackColor="#93451F" />
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RealEstateConnectionString %>" SelectCommand="SELECT [Property_Address], [Property_Id], [UserName],[Offer_Status], [Actual_Price], [Offer_Price], [Offer_QuotedDate] FROM [Offers_Made] WHERE  Offer_QuotedDate >= DATEADD(day,-3,GETDATE())    ORDER BY [Property_Id]"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RealEstateConnectionString %>" SelectCommand="SELECT [Property_Address], [Property_Id], [UserName],[Offer_Status], [Actual_Price], [Offer_Price], [Offer_QuotedDate] FROM [Offers_Made] WHERE Offer_QuotedDate >= DATEADD(day,-3,GETDATE())  ORDER BY [Property_Id]"></asp:SqlDataSource>
         <br />
         <br />
         <br />

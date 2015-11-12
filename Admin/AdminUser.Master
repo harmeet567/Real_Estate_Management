@@ -14,22 +14,12 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
 
     </asp:ContentPlaceHolder>
-
-    <script type="text/javascript" language="javascript">
-        function disableBackButton() {
-            window.history.forward()
-        }
-        disableBackButton();
-        window.onload = disableBackButton();
-        window.onpageshow = function (evt) { if (evt.persisted) disableBackButton() }
-        window.onload = function () { void (0) }
-</script>
 </head>
 
 <body>
     <form id="form1" runat="server" style="background-image: url('/Images/back.jpg')" >
-    <div>
-        <div style="background-color:#B8E6E6;margin-left:180px;; height:160px; width:1000px; ">
+    
+        <div style="background-color:#B8E6E6;margin-left:200px; height:160px; width:942px; ">
             <asp:Image ID="Image2" runat="server" Height="157px" style="text-align: left" Width="534px" ImageUrl="~/Images/templatemo_banner_bg.png" />
             
         
@@ -71,7 +61,6 @@
                 <div class="footer">Montreal Real Estate Ptv. Ltd.</div>
                 
       </div>
-        </div>
     </form>
 </body>
 </html>

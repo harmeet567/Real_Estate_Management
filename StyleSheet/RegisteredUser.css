@@ -14,7 +14,7 @@ body
 }
 .wrapper
 {
-    width: 1000px;
+    width: 950px;
     margin: auto;
 }
 .content
@@ -34,7 +34,7 @@ body
     /*background-color: rgb(10,110,178); blue*/
     /*background-color: rgb(17,141,04);my testing*/
     background-color:#AC5930;
-    width: 970px;
+    width: 922px;
     margin: 0px 0px 0px;
     padding: 15px;
     height: 42px; /* for adjusting the height of menu tabs*/

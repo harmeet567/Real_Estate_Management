@@ -2,8 +2,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <table style="width: 58%; height: 147px; align-self:center; position:inherit; margin-left: 311px;">
-         <tr><td class="auto-style7" colspan="3">
-             <h1 style="width: 423px"> Please enter your login details:</h1> </td></tr>  
+         <tr><td class="auto-style7" style="width: 93px"></td><td colspan="2">
+             <h1 style="width: 423px">
+        Please enter your login details:</h1> </td></tr>  
           <tr>
                 <td class="auto-style2" style="width: 93px; height: 45px; color: #FF6803; font-size: 11pt;">UserName</td>
                 <td class="auto-style4" style="height: 45px">

@@ -4,7 +4,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
 
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DBCS %>" SelectCommand="SELECT [Property_Id], [Property_Address], [Offer_Status],[Offer_QuotedDate], [Offer_AcceptedDate] FROM [Offers_Made] WHERE ([UserName] = @UserName)">
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DBCS %>" SelectCommand="SELECT [Property_Address], [Offer_Status],[Offer_QuotedDate], [Offer_AcceptedDate] FROM [Offers_Made] WHERE ([UserName] = @UserName)">
         <SelectParameters>
             <asp:SessionParameter Name="UserName" SessionField="UserName" Type="String" />
         </SelectParameters>
@@ -12,8 +12,6 @@
 
     <asp:GridView ID="GridView1" runat="server" AllowSorting="True" AutoGenerateColumns="False" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="Double" BorderWidth="2px" CellPadding="3" CellSpacing="2" DataSourceID="SqlDataSource1" Font-Names="Book Antiqua" Height="210px">
         <Columns>
-             <asp:BoundField DataField="Property_Id" HeaderText="Property Id" SortExpression="Property_Id" ItemStyle-Width="100px" >
-<ItemStyle Width="100px"></ItemStyle> </asp:BoundField>
              <asp:ImageField HeaderText="Property" DataImageUrlField="Property_Address" ControlStyle-Width="300"
         ControlStyle-Height = "150">
          </asp:ImageField>

@@ -28,18 +28,19 @@
 
     <style type="text/css">
         .auto-style2 {
-        width: 130px;
-        text-align: right;
-    }
+            width: 154px;
+            text-align: right;
+        }
         .auto-style3 {
-            text-align: left;
-            height: 26px;
+            width: 154px;
+            text-align: right;
+            height: 19px;
             color: #E46B1A;
-            font-size: large;
+            font-size: 11pt;
         }
         .auto-style4 {
             height: 19px;
-            width: 145px;
+            width: 256px;
             text-align: left;
         }
         .auto-style5 {
@@ -57,12 +58,12 @@
             height: 29px;
         }
         .auto-style12 {
-        width: 130px;
-        text-align: right;
-        height: 30px;
-        color: #E46B1A;
-        font-size: 11pt;
-    }
+            width: 154px;
+            text-align: right;
+            height: 30px;
+            color: #E46B1A;
+            font-size: 11pt;
+        }
         .auto-style13 {
             text-align: justify;
             width: 93px;
@@ -70,19 +71,29 @@
         }
         .auto-style14 {
             height: 30px;
-            width: 145px;
+            width: 256px;
             text-align: left;
+        }
+        .auto-style15 {
+            width: 256px;
         }
         #Reset1 {
             width: 75px;
         }
         .auto-style16 {
-            width: 145px;
+            width: 256px;
             text-align: left;
+        }
+        .auto-style17 {
+            width: 152px;
+            text-align: right;
+            height: 19px;
+            color: #E46B1A;
+            font-size: 11pt;
         }
         .auto-style18 {
             height: 29px;
-            width: 145px;
+            width: 256px;
             text-align: left;
         }
     .auto-style20 {
@@ -90,7 +101,7 @@
             width: 93px;
         }
         .auto-style21 {
-            width: 130px;
+            width: 154px;
             text-align: right;
             color: #E46B1A;
             font-size: 11pt;
@@ -98,27 +109,11 @@
         .auto-style22 {
             color: #E46B1A;
         }
-    .auto-style23 {
-        width: 130px;
-        text-align: right;
-        height: 19px;
-        color: #E46B1A;
-        font-size: 11pt;
-    }
-    .auto-style24 {
-        width: 145px;
-    }
     </style>
 
     <table style="width:99%; height: 241px; margin-left: 160px;">
-
         <tr>
-            <td class="auto-style3" colspan="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Create Your Account<br />
-            </td>
-        </tr>
-
-        <tr>
-            <td class="auto-style23">User Name</td>
+            <td class="auto-style3">User Name</td>
             <td class="auto-style6">
                 <asp:TextBox ID="txtUserName" runat="server" Width="180px"></asp:TextBox>
             </td>
@@ -127,7 +122,7 @@
             </td>
         </tr>
         <tr>
-            <td class="auto-style23">E-Mail</td>
+            <td class="auto-style17">E-Mail</td>
             <td class="auto-style9">
                 <asp:TextBox ID="txtEmail" runat="server" Width="179px" CausesValidation="True" Height="19px"></asp:TextBox>
                  </td>
@@ -169,7 +164,7 @@
                 </asp:DropDownList>
                 
                 &nbsp;</td>
-            <td class="auto-style24"> </td>
+            <td> </td>
         </tr>
         <tr>
             <td class="auto-style12">&nbsp;</td>
@@ -178,7 +173,7 @@
                  Admin Password:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="txtAdminPwd" TextMode="Password" runat="server" Height="18px" Width="181px"></asp:TextBox>
                 </div>
                 &nbsp;</td>
-            <td class="auto-style24"> &nbsp;</td>
+            <td> &nbsp;</td>
         </tr>
         <tr>
             
@@ -197,7 +192,7 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <input id="Reset1" type="reset" value="reset" />
             </td>
-            <td class="auto-style24">&nbsp;</td>
+            <td class="auto-style15">&nbsp;</td>
         </tr>
         <tr>
             <td class="auto-style2">&nbsp;</td>
@@ -205,7 +200,7 @@
                 
                 <asp:ValidationSummary ID="ValidationSummary1" Forecolor="Red" runat="server" Height="16px" Width="221px" />
             </td>
-            <td class="auto-style24">&nbsp;</td>
+            <td class="auto-style15">&nbsp;</td>
         </tr>
         </table>
 
