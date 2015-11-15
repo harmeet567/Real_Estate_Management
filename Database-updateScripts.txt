@@ -1,0 +1,250 @@
+CREATE TABLE [dbo].[BathRooms] (
+    [No_Of_BathRooms] INT NOT NULL);
+
+CREATE TABLE [dbo].[Bedrooms] (
+    [No_Of_Bedrooms] INT NOT NULL
+);
+
+CREATE TABLE [dbo].[PriceLimit] (
+    [Price] INT NOT NULL
+);
+
+CREATE TABLE [dbo].[Property] (
+    [Id]            INT          NOT NULL,
+    [Property_Type] VARCHAR (50) NULL
+);
+
+CREATE TABLE [dbo].[PropertyList_Mst] (
+    [Id]              INT           NOT NULL,
+    [Region_Name]     VARCHAR (50)  NULL,
+    [SubRegion_Name]  VARCHAR (50)  NULL,
+    [Purpose_Type]    VARCHAR (20)  NULL,
+    [Property_Type]   VARCHAR (50)  NULL,
+    [No_Of_Bedrooms]  INT           NULL,
+    [No_Of_BathRooms] INT           NULL,
+    [Price]           INT           NULL,
+    [Image]           VARCHAR (MAX) NULL
+);
+
+
+CREATE TABLE [dbo].[Region] (
+    [Region_Id]   INT           NOT NULL,
+    [Region_Name] NVARCHAR (50) NOT NULL
+);
+
+CREATE TABLE [dbo].[SubRegion] (
+    [SubRegion_Id]   INT          NOT NULL,
+    [SubRegion_Name] VARCHAR (50) NOT NULL,
+    [Region_Id]      INT          NOT NULL
+);
+
+CREATE TABLE [dbo].[UserDetails] (
+    [Id]       NVARCHAR (50) NULL,
+    [UserName] VARCHAR (50)  NULL,
+    [Email]    VARCHAR (50)  NULL,
+    [Password] VARCHAR (50)  NULL
+);
+<add name="RealEstateConnectionString" connectionString="Data Source=(localdb)\Projects;Initial Catalog=RealEstate;Integrated Security=True" providerName="System.Data.SqlClient"/>
+
+<add name="DBCS" connectionString="Data Source= (localdb)\Projects; Initial Catalog=RealEstate; Integrated Security=True" providerName="System.Data.SqlClient"/>
+
+
+--Temp_PropertyList
+
+CREATE TABLE [dbo].[User_Feedback] (
+    [FirstName] VARCHAR (50)  NOT NULL,
+    [LastName]  VARCHAR (50)  NOT NULL,
+    [Email]     VARCHAR (50)  NOT NULL,
+    [Comments]  VARCHAR (250) NULL
+);
+
+CREATE TABLE [dbo].[Temp_PropertyList] (
+    [Id]               INT           NOT NULL,
+    [Image]            VARCHAR (MAX) NULL,
+    [Property_Address] VARCHAR (100) NULL,
+    [Price]            INT           NULL,
+    [PostedDate]       DATE          NULL,
+    [Property_Status]  VARCHAR (20)  NULL,
+    [Purpose_Type]     VARCHAR (20)  NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
+----------------------------------------------------------------
+
+CREATE  Procedure [sp_MakeDecision_OnUserOffer]
+@PropertyId int,
+@Uname varchar(50),
+@OfferStatus   varchar(50),
+@Offer_AcceptedDate   datetime = null
+As
+SET NOCOUNT OFF;
+--IF EXISTS (SELECT 'True' From Offers_Made Where Username = @Uname and Property_Id = @PropertyId)
+BEGIN
+	if @Offer_AcceptedDate IS NULL set @Offer_AcceptedDate=getdate();
+    UPDATE Offers_Made SET Offer_Status = @OfferStatus, Offer_AcceptedDate = @Offer_AcceptedDate
+    where  UserName = @Uname and Property_Id = @PropertyId;
+
+    Update PropertyList_Mst  SET Property_Status = 'SOLD' 
+    where   Id = @PropertyId;
+END
+--ELSE
+BEGIN
+  --if @OfferDate IS NULL set @OfferDate=getdate();
+  --DECLARE @ImageLocation varchar(100);
+  --Select @ImageLocation = Image from PropertyList_Mst where Id=@PropertyId;
+  IF EXISTS (SELECT 'True' From Offers_Made Where Username <> @Uname and Property_Id = @PropertyId)
+   UPDATE Offers_Made SET Offer_Status = 'NOT ACCEPTED'
+    where  UserName <> @Uname and Property_Id = @PropertyId;
+
+END
+RETURN @@ROWCOUNT
+---------------------------------------------------------
+
+create procedure sPGetRegions
+as
+Begin
+ select Region_Id,Region_Name from Region
+end;
+
+-----------------------------------------------------
+create procedure sPGetSubRegionsByRegionId
+@RegionId int
+as
+Begin
+ select SubRegion_Id,SubRegion_Name from SubRegion
+ where Region_Id = @RegionId
+end
+--------------------------------------------------
+CREATE TABLE [dbo].[Property]
+(
+	[Id] INT NOT NULL PRIMARY KEY, 
+    [Property_Type] VARCHAR(50) NULL
+)
+
+-------------------------------------------------
+create procedure sPGetPropertyType
+as
+Begin
+Select Property_Type from Property;
+end;
+-------------------------------------------------
+
+create procedure sPGetNoOfBedrooms
+as
+Begin
+Select No_Of_Bedrooms from Bedrooms;
+end;
+
+------------------------------------------------
+create procedure sPGetNoOfBathrooms
+as
+Begin
+Select No_Of_BathRooms from BathRooms;
+end;
+------------------------------------------------
+Create procedure sPGetPriceLimit
+as
+Begin
+Select Price from PriceLimit;
+end;
+
+
+-------------------------------------------------
+
+Update PropertyList_Mst set Facilities = '<IKEA Superstore 2.5 K.M> '
+ where Id=12;
+ 12,13,14,15,16-22
+  Update PropertyList_Mst set Facilities = '<Namur Metro 0.5 K.M>'
+ where Id=13;
+  Update PropertyList_Mst set Facilities = '<Inorbit Shopping Mall 0.1 K.M>'
+ where Id=14;
+
+ 
+  Update PropertyList_Mst set Facilities = '<Montreal Kids Hospital 0.1 K.M>'
+ where Id=15;
+ 
+  Update PropertyList_Mst set Facilities = '<CandianTire 0.7 K.M>'
+ where Id=16;
+ 
+  Update PropertyList_Mst set Facilities = '<Cosco Superstore 0.3 K.M>'
+ where Id=17;
+
+  Update PropertyList_Mst set Facilities = '<Loyola High school 0.6 K.M>'
+ where Id=18;
+
+  Update PropertyList_Mst set Facilities = '<Sacred heart school of  High school 0.8 K.M>'
+ where Id=19;
+
+   Update PropertyList_Mst set Facilities = '<st Marys Hosipital 2 K.M>'
+ where Id=20;
+
+  Update PropertyList_Mst set Facilities = '<Jewish Hospital 2 K.M>'
+ where Id=21;
+
+   Update PropertyList_Mst set Facilities = '<Walmart Superstores 1.4 K.M>'
+ where Id=22;
+
+
+
+----------------------------------------------------------
+INSERT INTO [dbo].[Region] ([Region_Id], [Region_Name]) VALUES (1, 'Montreal Island')
+INSERT INTO [dbo].[Region] ([Region_Id], [Region_Name]) VALUES (2, 'Montreal South')
+INSERT INTO [dbo].[Region] ([Region_Id], [Region_Name]) VALUES (3, 'Montreal West')
+
+INSERT INTO [dbo].[SubRegion] ([SubRegion_Id], [SubRegion_Name], [Region_Id]) VALUES (1, N'St-Laurent', 1)
+INSERT INTO [dbo].[SubRegion] ([SubRegion_Id], [SubRegion_Name], [Region_Id]) VALUES (2, N'Ville-Marie (Downtown,Old Mtl)', 1)
+INSERT INTO [dbo].[SubRegion] ([SubRegion_Id], [SubRegion_Name], [Region_Id]) VALUES (3, N'Verdun', 1)
+INSERT INTO [dbo].[SubRegion] ([SubRegion_Id], [SubRegion_Name], [Region_Id]) VALUES (4, N'WestMount', 1)
+INSERT INTO [dbo].[SubRegion] ([SubRegion_Id], [SubRegion_Name], [Region_Id]) VALUES (5, N'Lasalle', 1)
+INSERT INTO [dbo].[SubRegion] ([SubRegion_Id], [SubRegion_Name], [Region_Id]) VALUES (6, N'Mount-Royal', 1)
+INSERT INTO [dbo].[SubRegion] ([SubRegion_Id], [SubRegion_Name], [Region_Id]) VALUES (7, N'BoucherVille', 2)
+INSERT INTO [dbo].[SubRegion] ([SubRegion_Id], [SubRegion_Name], [Region_Id]) VALUES (8, N'Chateauguay', 2)
+INSERT INTO [dbo].[SubRegion] ([SubRegion_Id], [SubRegion_Name], [Region_Id]) VALUES (9, N'Brossard', 2)
+INSERT INTO [dbo].[SubRegion] ([SubRegion_Id], [SubRegion_Name], [Region_Id]) VALUES (10, N'Candiac', 2)
+INSERT INTO [dbo].[SubRegion] ([SubRegion_Id], [SubRegion_Name], [Region_Id]) VALUES (11, N'Delson', 2)
+INSERT INTO [dbo].[SubRegion] ([SubRegion_Id], [SubRegion_Name], [Region_Id]) VALUES (12, N'Dorval', 3)
+INSERT INTO [dbo].[SubRegion] ([SubRegion_Id], [SubRegion_Name], [Region_Id]) VALUES (13, N'Beaconsfield', 3)
+INSERT INTO [dbo].[SubRegion] ([SubRegion_Id], [SubRegion_Name], [Region_Id]) VALUES (14, N'Dollard-Des-Drmeaux', 3)
+INSERT INTO [dbo].[SubRegion] ([SubRegion_Id], [SubRegion_Name], [Region_Id]) VALUES (15, N'Pointe Claire', 3)
+INSERT INTO [dbo].[SubRegion] ([SubRegion_Id], [SubRegion_Name], [Region_Id]) VALUES (16, N'Pierrefonds', 3)
+
+INSERT INTO [dbo].[BathRooms] ([No_Of_BathRooms]) VALUES (1)
+INSERT INTO [dbo].[BathRooms] ([No_Of_BathRooms]) VALUES (2)
+INSERT INTO [dbo].[BathRooms] ([No_Of_BathRooms]) VALUES (3)
+INSERT INTO [dbo].[BathRooms] ([No_Of_BathRooms]) VALUES (4)
+
+
+INSERT INTO [dbo].[Bedrooms] ([No_Of_Bedrooms]) VALUES (1)
+INSERT INTO [dbo].[Bedrooms] ([No_Of_Bedrooms]) VALUES (2)
+INSERT INTO [dbo].[Bedrooms] ([No_Of_Bedrooms]) VALUES (3)
+INSERT INTO [dbo].[Bedrooms] ([No_Of_Bedrooms]) VALUES (4)
+
+INSERT INTO [dbo].[PriceLimit] ([Price]) VALUES (100)
+INSERT INTO [dbo].[PriceLimit] ([Price]) VALUES (200)
+INSERT INTO [dbo].[PriceLimit] ([Price]) VALUES (300)
+INSERT INTO [dbo].[PriceLimit] ([Price]) VALUES (400)
+INSERT INTO [dbo].[PriceLimit] ([Price]) VALUES (500)
+INSERT INTO [dbo].[PriceLimit] ([Price]) VALUES (600)
+INSERT INTO [dbo].[PriceLimit] ([Price]) VALUES (700)
+INSERT INTO [dbo].[PriceLimit] ([Price]) VALUES (800)
+INSERT INTO [dbo].[PriceLimit] ([Price]) VALUES (900)
+INSERT INTO [dbo].[PriceLimit] ([Price]) VALUES (1000)
+INSERT INTO [dbo].[PriceLimit] ([Price]) VALUES (1200)
+INSERT INTO [dbo].[PriceLimit] ([Price]) VALUES (1400)
+INSERT INTO [dbo].[PriceLimit] ([Price]) VALUES (1600)
+INSERT INTO [dbo].[PriceLimit] ([Price]) VALUES (1800)
+INSERT INTO [dbo].[PriceLimit] ([Price]) VALUES (2000)
+INSERT INTO [dbo].[PriceLimit] ([Price]) VALUES (2500)
+INSERT INTO [dbo].[PriceLimit] ([Price]) VALUES (3000)
+
+
+INSERT INTO [dbo].[Property] ([Id], [Property_Type]) VALUES (1, N'Residential')
+INSERT INTO [dbo].[Property] ([Id], [Property_Type]) VALUES (2, N'Condo')
+INSERT INTO [dbo].[Property] ([Id], [Property_Type]) VALUES (3, N'Commercial')
+INSERT INTO [dbo].[Property] ([Id], [Property_Type]) VALUES (4, N'Parking')
+INSERT INTO [dbo].[Property] ([Id], [Property_Type]) VALUES (5, N'Agriculture Land')
+
+INSERT INTO [dbo].[PropertyList_Mst] ([Id], [Region_Name], [SubRegion_Name], [Purpose_Type], [Property_Type], [No_Of_Bedrooms], [No_Of_BathRooms], [Price], [Image]) VALUES (1, N'Montreal Island', N'Verdun', N'For Rent', N'Residential', 2, 1, 300, N'~/Images/House2.jpg')
+INSERT INTO [dbo].[PropertyList_Mst] ([Id], [Region_Name], [SubRegion_Name], [Purpose_Type], [Property_Type], [No_Of_Bedrooms], [No_Of_BathRooms], [Price], [Image]) VALUES (2, N'Montreal South', N'Brossard', N'For Rent', N'Condo', 3, 2, 1000, N'~/Images/House1.jpg')
+INSERT INTO [dbo].[PropertyList_Mst] ([Id], [Region_Name], [SubRegion_Name], [Purpose_Type], [Property_Type], [No_Of_Bedrooms], [No_Of_BathRooms], [Price], [Image]) VALUES (3, N'Montreal Island', N'Mount-Royal', N'For Rent', N'Condo', 1, 1, 1200, N'~/Images/Apt1.jpg')
+INSERT INTO [dbo].[PropertyList_Mst] ([Id], [Region_Name], [SubRegion_Name], [Purpose_Type], [Property_Type], [No_Of_Bedrooms], [No_Of_BathRooms], [Price], [Image]) VALUES (4, N'Montreal Island', N'Verdun', N'For Rent', N'Residential', 2, 1, 400, N'~/Images/Res1.jpg')
